@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.moduleone.activities.MainActivity">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.databindingdemo.ui.MainActivityViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:collapsedTitleGravity="top|center_horizontal"
+                app:expandedTitleGravity="left"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:title="My Contact"
+                app:toolbarId="@+id/toolbar">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="104dp"
+                    android:gravity="top"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:contentInsetStart="0dp"
+                    app:layout_collapseMode="pin" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tip_search"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/str_hint_search"
+                        app:boxStrokeColor="@color/colorAccent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:afterTextChanged="@{viewModel.afterTextChanged}"
+                            android:drawableStart="@drawable/ic_search_black_24dp"
+                            android:drawableLeft="@drawable/ic_search_black_24dp"
+                            android:drawablePadding="2dp"
+                            android:inputType="textCapCharacters"
+                            android:onTextChanged="@{viewModel.onTextChanged}" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_contact_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:scrollbars="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/str_no_data"
+            android:visibility="gone"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:layout_margin="20dp"/>
+        </LinearLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,42 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.databindingdemo.ni.remote.response.Users" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/display_image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+            android:contentDescription="@string/icon_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_place_holder"
+            bind:avatar="@{item.avatar_url}" />
+
+        <TextView
+            android:id="@+id/tv_display_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_10_dp"
+            android:text="@{item.display_name}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:layout_marginStart="@dimen/margin_10_dp" />
+
+    </LinearLayout>
+
+</layout>

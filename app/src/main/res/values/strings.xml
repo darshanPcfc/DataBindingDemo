@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DataBindingDemo</string>
+    <string name="icon_content">iconContent</string>
+    <string name="str_hint_search">Search Box</string>
+    <string name="str_hint_enter_text">Enter text</string>
+    <string name="str_no_data">Contact Does not exist</string>
+</resources>
